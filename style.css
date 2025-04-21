@@ -947,3 +947,35 @@ a:hover {
         grid-template-columns: 1fr;
     }
 }
+
+/* 添加到style.css中 */
+.main-menu {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.menu-link {
+    color: var(--text-white);
+    font-weight: 500;
+    transition: all 0.3s ease;
+    opacity: 0.8;
+}
+
+.menu-link:hover {
+    opacity: 1;
+    color: var(--text-white);
+}
+
+@media (max-width: 768px) {
+    .logo-container {
+        flex-direction: column;
+        padding: 10px;
+    }
+    
+    .main-menu {
+        margin-top: 10px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}

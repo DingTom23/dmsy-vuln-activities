@@ -19,6 +19,15 @@ session_start();
                 <i class="fas fa-code"></i>
                 <span>Code Academy</span>
             </div>
+            <div class="main-menu">
+                <a href="#about" class="menu-link">关于我们</a>
+                <a href="#courses" class="menu-link">课程</a>
+                <a href="#contact" class="menu-link">联系</a>
+                <a href="login.php" class="btn primary-btn">
+                    <i class="fas fa-sign-in-alt"></i>
+                    <span>登录</span>
+                </a>
+            </div>
         </div>
         
         <div class="content-wrapper">
@@ -32,15 +41,7 @@ session_start();
                     </a>
                     <a href="#about" class="btn secondary-btn">
                         <i class="fas fa-info-circle"></i>
-                        <span>关于我们</span>
-                    </a>
-                    <a href="#courses" class="btn secondary-btn">
-                        <i class="fas fa-book"></i>
-                        <span>课程介绍</span>
-                    </a>
-                    <a href="#contact" class="btn secondary-btn">
-                        <i class="fas fa-envelope"></i>
-                        <span>联系方式</span>
+                        <span>了解更多</span>
                     </a>
                 </div>
             </div>
