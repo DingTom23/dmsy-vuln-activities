@@ -38,18 +38,6 @@ $db_host = 'localhost';    // 数据库服务器地址
 $db_user = 'dmsyctfuser';         // 数据库用户名（修改为你的数据库用户）
 $db_pass = 'dmsyctfpassword'; // 数据库密码（修改为你的数据库密码）
 $db_name = 'coolsite';     // 数据库名称
-
-// 创建数据库连接
-$conn = mysqli_connect($db_host, $db_user, $db_pass, $db_name);
-
-// 检查连接是否成功
-if (!$conn) {
-    die("连接失败: " . mysqli_connect_error());
-}
-
-// 设置字符集
-mysqli_set_charset($conn, "utf8mb4");
-?>
 ```
 
 ### 2. .htaccess 文件
@@ -194,7 +182,18 @@ php -S 0.0.0.0:8080
 2. 文件上传漏洞：
    - 尝试上传带有 PHP Webshell
 
-3. sudo 滥用
+3. 密码复用:
+   - user:comet 的 password 也是 dmsyctfpassword，可以实现 su 登录
+
+4. /home/comet 权限问题:
+   - 可以读取 /home/comet/bash_history 来获取密码
+
+5. /etc/passwd comet 可写:
+   - 可以添加一个恶意用户，然后用 su 登录
+
+6. sudo 滥用:
+   - www-data 可以使用 sudo -l 查看用户的 sudo 权限, 有 sudo -u comet vi 权限
+   - comet 可以使用 sudo /home/*/backup.sh，路径穿越即可。 
 
 
 ## 注意事项
