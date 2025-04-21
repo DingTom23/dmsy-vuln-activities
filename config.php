@@ -1,8 +1,8 @@
 <?php
 // 数据库连接配置
 $db_host = 'localhost';
-$db_user = 'root';
-$db_pass = '';
+$db_user = 'dmsyctfuser';
+$db_pass = 'dmsyctfpassword';
 $db_name = 'coolsite';
 
 // 创建数据库连接

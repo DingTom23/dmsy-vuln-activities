@@ -236,15 +236,15 @@ if ($role === 'admin') {
                         <div class="flag-detail">
                             <h3>第二个Flag</h3>
                             <div class="flag-hint">
-                                <p>提示：尝试上传一个PHP Webshell，并查找服务器上的隐藏文件。</p>
-                                <p>位置：/flag_part2.txt</p>
+                                <p>提示：尝试上传一个PHP Webshell，并提权到 user</p>
+                                <p>位置：/home/{user}/user.txt </p>
                             </div>
                         </div>
                         <div class="flag-detail">
                             <h3>最终Flag</h3>
                             <div class="flag-hint">
-                                <p>提示：尝试获取服务器root权限后查找。</p>
-                                <p>位置：在系统的某处，需要足够的权限才能发现。</p>
+                                <p>提示：尝试获取服务器 root 权限后获得。</p>
+                                <p>位置：/root/root.txt </p>
                             </div>
                         </div>
                     </div>
@@ -380,8 +380,8 @@ if ($role === 'admin') {
                         </div>
                         <!-- 隐藏的flag提示 -->
                         <div class="info-item" style="color: #f0f0f0; font-size: 0.8em;">
-                            <span class="info-label">Flag位置提示：</span>
-                            <span class="info-value">尝试上传shell并查找/flag_part2.txt</span>
+                            <span class="info-label">Flag提示：</span>
+                            <span class="info-value">尝试登录 admin 管理员 账户来获得第一个 flag </span>
                         </div>
                     </div>
                 </div>

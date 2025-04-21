@@ -17,10 +17,10 @@ CREATE TABLE IF NOT EXISTS users (
 
 -- 插入示例用户数据（使用明文弱密码）
 INSERT INTO users (username, password, email, role) VALUES 
-('admin', '123456', 'admin@dmsy.cn', 'admin'),
-('user1', 'password', 'user1@dmsy.cn', 'user'),
+('admin', '$iloveyou_comet$', 'admin@dmsy.cn', 'admin'),
+('user1', '1234567', 'user1@dmsy.cn', 'user'),
 ('zhangsan', 'qwerty', 'zhangsan@dmsy.cn', 'user'),
-('test', 'test123', 'test@dmsy.cn', 'user');
+('test', 'test', 'test@dmsy.cn', 'user');
 
 -- 创建用户配置表
 CREATE TABLE IF NOT EXISTS user_settings (

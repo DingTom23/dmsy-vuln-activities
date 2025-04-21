@@ -35,8 +35,8 @@
 <?php
 // 数据库连接配置
 $db_host = 'localhost';    // 数据库服务器地址
-$db_user = 'ctfuser';      // 数据库用户名（修改为你的数据库用户）
-$db_pass = 'ctfpassword';  // 数据库密码（修改为你的数据库密码）
+$db_user = 'dmsyctfuser';         // 数据库用户名（修改为你的数据库用户）
+$db_pass = 'dmsyctfpassword'; // 数据库密码（修改为你的数据库密码）
 $db_name = 'coolsite';     // 数据库名称
 
 // 创建数据库连接
@@ -62,20 +62,12 @@ mysqli_set_charset($conn, "utf8mb4");
 # 允许 PHP 代码在其他文件类型中执行
 AddType application/x-httpd-php .php .phtml .php3 .php4 .php5 .phps .pht .phar .inc
 
-# 将其他文件扩展名解析为 PHP
-AddHandler application/x-httpd-php .jpg .jpeg .png .gif .txt
-
-# 允许PHP短标签
-php_flag short_open_tag on
-
 # 关闭PHP错误显示
 php_flag display_errors off
 
 # 无需验证文件上传类型
 php_flag file_uploads on
 ```
-
-这个配置是CTF挑战的一部分，允许选手上传图片类型的webshell并执行。
 
 ### 3. Apache 服务器配置
 
@@ -124,8 +116,8 @@ mysql -u root -p
 
 ```sql
 CREATE DATABASE coolsite CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-CREATE USER 'ctfuser'@'localhost' IDENTIFIED BY 'ctfpassword';
-GRANT ALL PRIVILEGES ON coolsite.* TO 'ctfuser'@'localhost';
+CREATE USER 'dmsyctfuser'@'localhost' IDENTIFIED BY 'dmsyctfpassword';
+GRANT ALL PRIVILEGES ON coolsite.* TO 'dmsyctfuser'@'localhost';
 FLUSH PRIVILEGES;
 EXIT;
 ```
@@ -133,7 +125,7 @@ EXIT;
 3. 导入数据库结构和初始数据:
 
 ```bash
-mysql -u ctfuser -p coolsite < database.sql
+mysql -u dmsyctfuser user -p coolsite < database.sql
 ```
 
 ### 3. 配置网站
@@ -152,8 +144,6 @@ sudo cp .htaccess /var/www/html/
 sudo mkdir -p /var/www/html/uploads
 sudo chmod 777 /var/www/html/uploads
 
-# Windows XAMPP
-mkdir C:/xampp/htdocs/uploads
 ```
 
 3. 创建flag文件:
@@ -190,10 +180,10 @@ php -S 0.0.0.0:8080
 
 | 用户名 | 密码 | 角色 |
 |-------|------|-----|
-| admin | 123456 | 管理员 |
+| admin | $iloveyou_comet$ | 管理员 |
 | user1 | password | 普通用户 |
 | zhangsan | qwerty | 普通用户 |
-| test | test123 | 普通用户 |
+| test | test | 普通用户 |
 
 ## 攻击提示
 
@@ -202,13 +192,10 @@ php -S 0.0.0.0:8080
    - 或者使用 `admin' --` 作为用户名，任意密码
 
 2. 文件上传漏洞：
-   - 尝试上传带有PHP代码的图片文件
-   - 例如创建一个 `shell.php.jpg` 文件，内容为 `<?php system($_GET['cmd']); ?>`
+   - 尝试上传带有 PHP Webshell
 
-3. 获取flags：
-   - 第一个flag：成功以admin身份登录后在控制面板可见
-   - 第二个flag：使用webshell访问服务器上的 `/flag_part2.txt`
-   - 最终flag：尝试提权访问 `/root/final_flag.txt`
+3. sudo 滥用
+
 
 ## 注意事项
 
