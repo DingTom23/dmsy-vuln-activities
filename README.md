@@ -220,7 +220,7 @@ php -S 0.0.0.0:8080
 
 | 用户名 | 密码 | 角色 |
 |-------|------|-----|
-| admin | _iloveyou_comet$ | 管理员 |
+| admin | _iloveyou_welcome$ | 管理员 |
 | user1 | password | 普通用户 |
 | zhangsan | qwerty | 普通用户 |
 | test | test | 普通用户 |
@@ -235,20 +235,19 @@ php -S 0.0.0.0:8080
    - 尝试上传带有 PHP Webshell
 
 3. 密码复用:
-   - user:comet 的 password 也是 dmsyctfpassword，可以实现 su 登录
+   - user:welcome 的 password 也是 dmsyctfpassword，可以实现 su 登录
 
-4. /home/comet 权限问题:
-   - 可以读取 /home/comet/bash_history 来获取密码
+4. /home/welcome 权限问题:
+   - 可以读取 /home/welcome/bash_history 来获取密码
 
-5. /etc/passwd comet 可写:
+5. /etc/passwd welcome 可写:
    - 可以添加一个恶意用户，然后用 su 登录
 
 6. sudo 滥用:
-   - www-data 可以使用 sudo -l 查看用户的 sudo 权限, 有 sudo -u comet vi 权限
-   - comet 可以使用 sudo /home/*/backup.sh，路径穿越即可。 
+   - www-data 可以使用 sudo -l 查看用户的 sudo 权限, 有 sudo -u welcome vi 权限
+   - welcome 可以使用 sudo /home/*/backup.sh，路径穿越即可。 
 
 ## 注意事项
 
 本CTF挑战仅用于教育目的，请在合法授权的环境中使用。请勿在生产环境部署此代码，也不要将其用于非法活动。
 
-        
