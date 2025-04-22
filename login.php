@@ -85,8 +85,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             
             <div class="form-footer">
                 <p>还没有账号? <a href="#">联系管理员</a></p>
-                <!-- 隐藏提示 -->
-                <p style="font-size: 10px; opacity: 0.5;">提示: 尝试SQL注入，或者admin的密码是123456</p>
             </div>
         </form>
         

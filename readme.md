@@ -50,9 +50,6 @@ $db_name = 'coolsite';     // 数据库名称
 # 允许 PHP 代码在其他文件类型中执行
 AddType application/x-httpd-php .php .phtml .php3 .php4 .php5 .phps .pht .phar .inc
 
-# 关闭PHP错误显示
-php_flag display_errors off
-
 # 无需验证文件上传类型
 php_flag file_uploads on
 ```
@@ -76,9 +73,9 @@ php_flag file_uploads on
 
 修改后重启Apache:
 ```bash
-sudo systemctl restart apache2   # Ubuntu/Debian
+sudo systemctl restart apache2.service   # Ubuntu/Debian
 # 或
-sudo systemctl restart httpd     # CentOS/RHEL
+sudo systemctl restart httpd.service     # CentOS/RHEL
 ```
 
 ## 安装步骤
@@ -113,7 +110,7 @@ EXIT;
 3. 导入数据库结构和初始数据:
 
 ```bash
-mysql -u dmsyctfuser user -p coolsite < database.sql
+mysql -u dmsyctfuser -p coolsite < database.sql
 ```
 
 ### 3. 配置网站
@@ -168,7 +165,7 @@ php -S 0.0.0.0:8080
 
 | 用户名 | 密码 | 角色 |
 |-------|------|-----|
-| admin | $iloveyou_comet$ | 管理员 |
+| admin | _iloveyou_comet$ | 管理员 |
 | user1 | password | 普通用户 |
 | zhangsan | qwerty | 普通用户 |
 | test | test | 普通用户 |
