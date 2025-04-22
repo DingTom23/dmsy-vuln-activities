@@ -10,19 +10,19 @@
 
 ## 文件结构
 /
-├── index.php # 网站首页
-├── login.php # 登录页面（含SQL注入漏洞）
-├── dashboard.php # 控制面板（含文件上传和第一个flag）
-├── logout.php # 登出功能
-├── config.php # 数据库配置文件
-├── .htaccess # Apache配置文件（允许执行PHP）
-├── database.sql # 数据库结构和初始数据
+├── index.php           # 网站首页
+├── login.php           # 登录页面（含SQL注入漏洞）
+├── dashboard.php       # 控制面板（含文件上传和第一个flag）
+├── logout.php          # 登出功能
+├── config.php          # 数据库配置文件
+├── .htaccess           # Apache配置文件（允许执行PHP）
+├── database.sql        # 数据库结构和初始数据
 ├── css/
-│ └── style.css # 网站样式表
+│   └── style.css       # 网站样式表
 ├── js/
-│ ├── script.js # 主页和登录页特效
-│ └── dashboard.js # 控制面板交互功能
-└── uploads/ # 文件上传目录
+│   ├── script.js       # 主页和登录页特效
+│   └── dashboard.js    # 控制面板交互功能
+└── uploads/            # 文件上传目录
 
 ## 配置文件说明
 
@@ -96,6 +96,7 @@ sudo systemctl restart apache2
 1. 创建新的 MySQL 数据库:
 
 ```bash
+sudo systemctl start mariadb.service / mysql.service
 mysql -u root -p
 ```
 
@@ -121,7 +122,7 @@ mysql -u dmsyctfuser -p coolsite < database.sql
 # 对于Ubuntu/Debian
 sudo cp -r * /var/www/html/
 sudo cp .htaccess /var/www/html/
-
+```
 2. 确保 Web 服务器对上传目录有写入权限:
 
 ```bash
@@ -129,25 +130,6 @@ sudo cp .htaccess /var/www/html/
 sudo mkdir -p /var/www/html/uploads
 sudo chmod 777 /var/www/html/uploads
 
-```
-
-3. 创建flag文件:
-
-
-## 启动服务
-
-1. 启动 MySQL:
-
-```bash
-sudo systemctl start mysql
-```
-
-2. 启动 Apache:
-
-```bash
-sudo systemctl start apache2
-# 或
-sudo systemctl start httpd
 ```
 
 3. 或者使用 PHP 内置服务器快速测试（不推荐用于生产环境）:
