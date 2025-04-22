@@ -52,7 +52,7 @@ session_start();
         <div class="container">
             <h2 class="section-title">关于我们</h2>
             <div class="about-content">
-                <p>Code Academy 是一家专注于编程教育的在线学习平台，致力于为学生提供高质量的编程课程和实践机会。我们的使命是通过技术教育赋能每一位学习者，帮助他们成为未来的科技领导者。</p>
+                <p>Code Academy 是一所不知道啥的实验室。</p>
             </div>
         </div>
     </section>
@@ -92,15 +92,15 @@ session_start();
             <div class="contact-info">
                 <div class="contact-item">
                     <i class="fas fa-map-marker-alt"></i>
-                    <span>地址：北京市海淀区科技园路</span>
+                    <span>地址：不知道</span>
                 </div>
                 <div class="contact-item">
                     <i class="fas fa-phone"></i>
-                    <span>电话：010-12345678</span>
+                    <span>电话：不知道</span>
                 </div>
                 <div class="contact-item">
                     <i class="fas fa-envelope"></i>
-                    <span>邮箱：info@codeacademy.com</span>
+                    <span>邮箱：不知道</span>
                 </div>
             </div>
         </div>
@@ -125,7 +125,7 @@ session_start();
                 </div>
             </div>
             <div class="copyright">
-                &copy; 2023 Code Academy. 保留所有权利.
+                &copy; 2025 Code Academy. 保留所有权利.
             </div>
         </div>
     </footer>

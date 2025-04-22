@@ -381,7 +381,7 @@ if ($role === 'admin') {
                         <!-- 隐藏的flag提示 -->
                         <div class="info-item" style="color: #f0f0f0; font-size: 0.8em;">
                             <span class="info-label">Flag提示：</span>
-                            <span class="info-value">尝试登录 admin 管理员 账户来获得第一个 flag </span>
+                            <span class="info-value">尝试登录 admin 管理员账户来获得第一个 flag ( 我 sql 注入呢? ) </span>
                         </div>
                     </div>
                 </div>
