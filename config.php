@@ -5,6 +5,9 @@ $db_user = 'dmsyctfuser';
 $db_pass = 'dmsyctfpassword';
 $db_name = 'coolsite';
 
+// 懦夫模式设置 - 开启后会显示SQL错误和执行的SQL语句
+$coward_mode = false; // 默认关闭
+
 // 创建数据库连接
 $conn = mysqli_connect($db_host, $db_user, $db_pass, $db_name);
 
@@ -15,4 +18,4 @@ if (!$conn) {
 
 // 设置字符集
 mysqli_set_charset($conn, "utf8mb4");
-?> 
+?>

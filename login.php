@@ -4,6 +4,20 @@ require_once 'config.php';
 
 $error = '';
 
+// 检查是否有懦夫模式切换请求
+if (isset($_GET['coward_mode'])) {
+    // 设置cookie，有效期7天
+    setcookie('coward_mode', $_GET['coward_mode'], time() + (7 * 24 * 60 * 60), '/');
+    // 重定向回登录页面
+    header("Location: login.php");
+    exit;
+}
+
+// 从cookie中获取懦夫模式状态
+if (isset($_COOKIE['coward_mode'])) {
+    $coward_mode = ($_COOKIE['coward_mode'] == '1');
+}
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $username = $_POST['username'];
     $password = $_POST['password'];
@@ -12,9 +26,22 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // 提示: 尝试 ' OR '1'='1 作为用户名和密码
     // 或者 admin' -- 作为用户名，任意密码
     $sql = "SELECT id, username, password, role FROM users WHERE username = '$username' AND password = '$password'";
+    
+    // 在懦夫模式下显示执行的SQL语句
+    if ($coward_mode) {
+        $error = "执行的SQL语句: " . $sql . "<br>";
+    }
+    
     $result = mysqli_query($conn, $sql);
     
-    if ($result && mysqli_num_rows($result) > 0) {
+    if (!$result) {
+        // 根据懦夫模式决定是否显示SQL错误信息
+        if ($coward_mode) {
+            $error .= "SQL错误: " . mysqli_error($conn);
+        } else {
+            $error = "登录失败，用户名或密码不正确";
+        }
+    } else if (mysqli_num_rows($result) > 0) {
         $user = mysqli_fetch_assoc($result);
         
         $_SESSION['user_id'] = $user['id'];
@@ -24,7 +51,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         header("Location: dashboard.php");
         exit;
     } else {
-        $error = '用户名或密码不正确';
+        if ($coward_mode) {
+            $error .= "查询成功但未找到匹配的用户";
+        } else {
+            $error = "登录失败，用户名或密码不正确";
+        }
     }
     
     mysqli_close($conn);
@@ -39,6 +70,35 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <title>登录 - Code Academy</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .coward-mode-toggle {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #f8f9fa;
+            border: 1px solid #ddd;
+            padding: 10px 15px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: #333;
+        }
+        .coward-mode-toggle:hover {
+            background-color: #e9ecef;
+        }
+        .coward-mode-status {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: <?php echo isset($coward_mode) && $coward_mode ? '#28a745' : '#dc3545'; ?>;
+        }
+    </style>
 </head>
 <body class="login-page">
     <div class="particles-container" id="particles-js"></div>
@@ -96,7 +156,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         </div>
     </div>
     
+    <!-- 懦夫模式切换按钮 -->
+    <a href="login.php?coward_mode=<?php echo isset($coward_mode) && $coward_mode ? '0' : '1'; ?>" class="coward-mode-toggle">
+        <span class="coward-mode-status"></span>
+        <span>懦夫模式: <?php echo isset($coward_mode) && $coward_mode ? '开启' : '关闭'; ?></span>
+    </a>
+    
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script src="js/script.js"></script>
 </body>
-</html> 
+</html>
