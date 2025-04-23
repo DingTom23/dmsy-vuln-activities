@@ -245,7 +245,7 @@ php -S 0.0.0.0:8080
 
 6. sudo 滥用:
    - www-data 可以使用 sudo -l 查看用户的 sudo 权限, 有 sudo -u welcome vi 权限
-   - welcome 可以使用 sudo /home/*/backup.sh，路径穿越即可。 
+   - welcome 可以使用 sudo /home/*/backup.sh，删除文件然后新建一个即可
 
 ## 注意事项
 

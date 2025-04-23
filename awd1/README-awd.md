@@ -8,6 +8,11 @@
     T1: root:$1$0kRGbLi5$o1jTxIVwcDWSOcKtTLukM1
     T2: root:$1$xDRC88E9$NuBtIeH1q2Xndltvfk0Wu0
     ```
+-   **MySQL dmsyctfuser 用户:**
+    ```
+    T1: dmsyctfuser:northeastsharifah
+    T2: dmsyctfuser:112785september27
+    ```
 -   **Linux Root 用户:**
     ```
     T1: root:$1$DcI4hlB5$7Fzb9WR6XrBFwjHgBcpA61
