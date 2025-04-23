@@ -196,9 +196,6 @@ welcome@dmsy-awd:~$ base64 "$LFILE" | base64 -d
 flag{1998cbf9-1f88-11f0-a369-000c29094b2d}
 ```
 
-## 彩蛋
-
-
 #### 后记
 我靠，累死了，markdown 手写的，服务全部手搓。
 幸好有伟大的 claude 给我写 php 代码，要不然我就死在这了。

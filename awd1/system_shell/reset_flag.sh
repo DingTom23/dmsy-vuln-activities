@@ -37,11 +37,15 @@ chown welcome:welcome /home/welcome/user.txt
 chmod 640 /opt/flag.txt
 chown www-data:www-data /opt/flag.txt
 
+# 向所有终端发送消息
+echo "向所有终端发送重置通知..."
+wall "flags are reseted!!!"
+
 echo "Flag 重置完成!"
 echo "[+] web flag: /opt/flag.txt:"
-echo "- $flag3\n"
+echo "- $flag3"
 echo "[+] user flag: /home/welcome/user.txt"
-echo "- $flag2\n"
+echo "- $flag2"
 echo "[+] root flag: /root/root.txt"
 echo "- $flag1"
 

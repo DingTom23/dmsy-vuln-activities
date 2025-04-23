@@ -1,3 +1,5 @@
+# 废弃
+
 [Unit]
 Description=彩蛋服务 - 本地监听 6666 端口
 After=network.target
