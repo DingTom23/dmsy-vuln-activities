@@ -1,6 +1,8 @@
 -- 创建数据库
 CREATE DATABASE IF NOT EXISTS coolsite CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-
+CREATE USER 'dmsyctfuser'@'localhost' IDENTIFIED BY '112785september27';
+GRANT ALL PRIVILEGES ON coolsite.* TO 'dmsyctfuser'@'localhost';
+FLUSH PRIVILEGES;
 -- 使用数据库
 USE coolsite;
 

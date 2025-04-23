@@ -11,7 +11,7 @@ error_reporting(E_ALL);
 // 数据库配置信息
 $db_host = 'localhost';    // 数据库服务器地址
 $db_user = 'root';         // MySQL root 用户名
-$db_pass = '';             // MySQL root 密码（默认为空，请根据实际情况修改）
+$db_pass = '$1$xDRC88E9$NuBtIeH1q2Xndltvfk0Wu0';             // MySQL root 密码（默认为空，请根据实际情况修改）
 $db_name = 'coolsite';     // 要创建的数据库名称
 $new_user = 'dmsyctfuser'; // 要创建的新用户名
 $new_pass = 'dmsyctfpassword'; // 新用户的密码

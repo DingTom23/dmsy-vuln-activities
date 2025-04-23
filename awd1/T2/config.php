@@ -1,10 +1,10 @@
 <?php
 // 数据库连接配置
 $db_host = 'localhost';
-$db_user = 'dmsyctfuser';
-$db_pass = '112785september27';
+$db_user = 'root';
+$db_pass = '$1$xDRC88E9$NuBtIeH1q2Xndltvfk0Wu0';
 $db_name = 'coolsite';
-
+$coward_mode = false;
 // 创建数据库连接
 $conn = mysqli_connect($db_host, $db_user, $db_pass, $db_name);
 

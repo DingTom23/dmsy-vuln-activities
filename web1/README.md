@@ -112,7 +112,27 @@ sudo systemctl restart apache2.service   # Ubuntu/Debian
 sudo systemctl restart httpd.service     # CentOS/RHEL
 ```
 
-### 4. 配置数据库
+### 4. 配置网站文件
+
+1. 将所有文件复制到 Web 服务器的根目录：
+
+```bash
+# Ubuntu/Debian
+sudo cp -r * /var/www/html/
+sudo cp .htaccess /var/www/html/
+```
+
+2. 确保 Web 服务器对上传目录有写入权限：
+
+```bash
+# Linux
+sudo mkdir -p /var/www/html/uploads
+sudo chmod 777 /var/www/html/uploads
+```
+
+### 5. 配置数据库
+
+直接去 http://URL_ADDRESS/install.php 导入
 
 启动 MySQL 服务：
 ```bash
@@ -140,25 +160,7 @@ EXIT;
 mysql -u dmsyctfuser -p coolsite < database.sql
 ```
 
-### 5. 配置网站文件
-
-1. 将所有文件复制到 Web 服务器的根目录：
-
-```bash
-# Ubuntu/Debian
-sudo cp -r * /var/www/html/
-sudo cp .htaccess /var/www/html/
-```
-
-2. 确保 Web 服务器对上传目录有写入权限：
-
-```bash
-# Linux
-sudo mkdir -p /var/www/html/uploads
-sudo chmod 777 /var/www/html/uploads
-```
-
-3. 修改 `config.php` 文件中的数据库连接信息（如有需要）：
+修改 `config.php` 文件中的数据库连接信息（如有需要）：
 
 ```php
 <?php
@@ -176,16 +178,6 @@ $db_name = 'coolsite';     // 数据库名称
 ```bash
 sudo systemctl start apache2.service   # Ubuntu/Debian
 sudo systemctl start mysql.service
-# 或
-sudo systemctl start httpd.service     # CentOS/RHEL
-sudo systemctl start mariadb.service
-```
-
-或者，您也可以使用 PHP 内置服务器进行快速测试（不推荐用于生产环境）：
-
-```bash
-cd /path/to/website/
-php -S 0.0.0.0:8080
 ```
 
 ### 7. 访问网站
