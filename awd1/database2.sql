@@ -17,7 +17,7 @@ CREATE TABLE IF NOT EXISTS users (
 
 -- 插入示例用户数据（使用明文弱密码）
 INSERT INTO users (username, password, email, role) VALUES 
-('admin', '_iloveyou_comet$', 'admin@dmsy.cn', 'admin'),
+('admin', 'jeanjeandianacarolina', 'admin@dmsy.cn', 'admin'),
 ('user1', '1234567', 'user1@dmsy.cn', 'user'),
 ('zhangsan', 'qwerty', 'zhangsan@dmsy.cn', 'user'),
 ('test', 'test', 'test@dmsy.cn', 'user');

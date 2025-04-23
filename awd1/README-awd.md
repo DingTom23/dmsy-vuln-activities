@@ -2,19 +2,27 @@
 
 ## 凭证信息 (Credentials)
 
+### 默认配置使用 T1 的凭证 (密码不是加密后的 hash ，用 hash 做的密码)
 -   **MySQL Root 用户:**
     ```
-    mysql:root:$1$0kRGbLi5$o1jTxIVwcDWSOcKtTLukM1
+    T1: root:$1$0kRGbLi5$o1jTxIVwcDWSOcKtTLukM1
+    T2: root:$1$xDRC88E9$NuBtIeH1q2Xndltvfk0Wu0
     ```
 -   **Linux Root 用户:**
     ```
-    linux:root:$1$DcI4hlB5$7Fzb9WR6XrBFwjHgBcpA61
+    T1: root:$1$DcI4hlB5$7Fzb9WR6XrBFwjHgBcpA61
+    T2: root:$1$zu5fqmiV$hRUIt5Hp0LQwlBSDC5XuA0
     ```
 -   **Linux welcome 用户:**
     ```
-    linux:welcome:welcome
+    T1: welcome:welcome
+    T2: welcome:welcome
     ```
-
+-   **WEB admin 用户:**
+    ```
+    T1: admin:babygirl94andrew10
+    T2: admin:jeanjeandianacarolina
+    ```
 ## FTP 服务
 
 -   允许匿名登录。
