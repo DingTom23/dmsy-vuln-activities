@@ -61,6 +61,12 @@
     ```
     这暗示了 `welcome` 用户名和密码相同。
 
+## /home/welcome/.bash_history 文件
+-   `welcome` 用户的 Bash 历史记录文件 (`/home/welcome/.bash_history`) 中包含了一些敏感信息。
+-   **提示信息:** 在 `/home/welcome/.bash_history` 文件中可以找到以下内容：
+    ```
+    
+
 ## Sudo 滥用
 -   www-data 用户:
 ```bash

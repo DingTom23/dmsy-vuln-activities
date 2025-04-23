@@ -57,23 +57,6 @@ AddType application/x-httpd-php .php .phtml .php3 .php4 .php5 .phps .pht .phar .
 php_flag file_uploads on
 ```
 
-### 3. Apache 服务器配置
-
-如果使用Apache，需要在Apache配置文件中启用 .htaccess：
-
-- 对于Ubuntu/Debian：`/etc/apache2/apache2.conf`
-- 对于CentOS/RHEL：`/etc/httpd/conf/httpd.conf`
-
-找到对应网站目录的配置，修改为：
-
-```apache
-<Directory /var/www/html> # 或你的网站目录
-    Options Indexes FollowSymLinks
-    AllowOverride All  # 这行很重要
-    Require all granted
-</Directory>
-```
-
 修改后重启Apache:
 ```bash
 sudo systemctl restart apache2.service   # Ubuntu/Debian
@@ -106,7 +89,7 @@ cd dmsy-vuln-activities
 确保在 Apache 配置中启用了以下模块：
 ```bash
 sudo a2enmod rewrite
-sudo a2enmod php8.2
+sudo a2enmod php8.3
 ```
 
 修改 Apache 配置文件，启用 .htaccess：
