@@ -1,0 +1,5 @@
+# 允许 PHP 代码在其他文件类型中执行
+AddType application/x-httpd-php .php .phtml .php3 .php4 .php5 .phps .pht .phar .inc
+
+# 无需验证文件上传类型
+php_flag file_uploads on 
