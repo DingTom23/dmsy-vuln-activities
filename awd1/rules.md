@@ -10,6 +10,7 @@ flag:
 /root/root.txt -- 500 分
 
 check:
+有reverse shell: -- -100 分
 严重影响业务: -- -500 分
 重置机器: -- -1000 分
 ```

