@@ -118,10 +118,7 @@ if ($role === 'admin') {
                     <span>用户管理</span>
                 </a>
                 
-                <a href="#flag" class="menu-item">
-                    <i class="fas fa-flag"></i>
-                    <span>Flag信息</span>
-                </a>
+                <!-- Removed Flag 信息 menu item -->
                 <?php endif; ?>
                 
                 <a href="#profile" class="menu-item">
@@ -174,12 +171,7 @@ if ($role === 'admin') {
                         <h2>欢迎回来, <?php echo htmlspecialchars($username); ?>!</h2>
                         <p>今天是 <?php echo date('Y年m月d日'); ?></p>
                         
-                        <?php if ($username === 'admin' && $role === 'admin'): ?>
-                        <div class="flag-alert">
-                            <p>恭喜你！作为管理员，这是你的第一个Flag：</p>
-                            <div class="flag-container"><?php echo $first_flag; ?></div>
-                        </div>
-                        <?php endif; ?>
+                        <!-- Removed flag alert div -->
                     </div>
                     
                     <!-- 控制台卡片 -->
@@ -306,13 +298,7 @@ if ($role === 'admin') {
                     </div>
                 </div>
                     
-                    <div class="flag-container">
-                        <div class="flag-item">
-                            <h3>管理员Flag</h3>
-                            <p><?php echo $first_flag; ?></p>
-                        </div>
-                    </div>
-                </div>
+                    <!-- Removed flag container div -->
                 <?php endif; ?>
                 
                 <!-- 个人资料 -->
@@ -393,4 +379,4 @@ if ($role === 'admin') {
     });
     </script>
 </body>
-</html> 
+</html>
