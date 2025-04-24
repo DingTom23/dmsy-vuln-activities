@@ -14,12 +14,6 @@ $user_id = $_SESSION['user_id'];
 $message = '';
 $error = '';
 
-// 设置flag，只有admin才能看到
-$first_flag = '';
-if ($username === 'admin' && $role === 'admin') {
-    $first_flag = "flag{69dc7238-202a-11f0-b2fe-000c29094b2d}";
-}
-
 // 处理文件上传（仅限admin）
 if (isset($_POST['upload']) && $role === 'admin') {
     $target_dir = "uploads/";
@@ -311,13 +305,6 @@ if ($role === 'admin') {
                         </div>
                     </div>
                 </div>
-                
-                <!-- Flag信息 -->
-                <div id="flag" class="dashboard-section">
-                    <div class="section-header">
-                        <h2>Flag信息</h2>
-                        <p>系统中的旗标</p>
-                    </div>
                     
                     <div class="flag-container">
                         <div class="flag-item">

