@@ -3,15 +3,15 @@
 ## 凭证信息 (Credentials)
 
 ###### PS: (密码不是加密后的 hash ，用 hash 做的密码)
--   **MySQL Root 用户:**
-    ```
-    T1: root:$1$0kRGbLi5$o1jTxIVwcDWSOcKtTLukM1
-    T2: root:$1$xDRC88E9$NuBtIeH1q2Xndltvfk0Wu0
-    ```
 -   **Linux Root 用户:**
     ```
     T1: root:$1$DcI4hlB5$7Fzb9WR6XrBFwjHgBcpA61
     T2: root:$1$zu5fqmiV$hRUIt5Hp0LQwlBSDC5XuA0
+    ```
+-   **MySQL Root 用户:**
+    ```
+    T1: root:$1$0kRGbLi5$o1jTxIVwcDWSOcKtTLukM1
+    T2: root:$1$xDRC88E9$NuBtIeH1q2Xndltvfk0Wu0
     ```
 -   **Linux welcome 用户:**
     ```
