@@ -23,17 +23,12 @@ $available_games = [
     'typing.php' => '打字游戏'
 ];
 
-// 文件包含漏洞 - 直接包含用户提供的game参数
 $game_content = '';
 $current_game = '';
 $game_description = '';
 
 if (isset($_GET['game'])) {
     $current_game = $_GET['game'];
-    
-    // 尝试包含文件 - 这里存在文件包含漏洞
-    // 可以使用PHP伪协议如 php://filter/convert.base64-encode/resource=config.php
-    // 或 ../../etc/passwd 等路径遍历
     @include($current_game);
     
     // 设置游戏描述

