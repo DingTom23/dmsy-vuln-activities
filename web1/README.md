@@ -57,6 +57,23 @@ AddType application/x-httpd-php .php .phtml .php3 .php4 .php5 .phps .pht .phar .
 php_flag file_uploads on
 ```
 
+### 3. Apache 服务器配置
+
+如果使用Apache，需要在Apache配置文件中启用 .htaccess：
+
+- 对于Ubuntu/Debian：`/etc/apache2/apache2.conf`
+- 对于CentOS/RHEL：`/etc/httpd/conf/httpd.conf`
+
+找到对应网站目录的配置，修改为：
+
+```apache
+<Directory /var/www/html> # 或你的网站目录
+    Options Indexes FollowSymLinks
+    AllowOverride All  # 这行很重要
+    Require all granted
+</Directory>
+```
+
 修改后重启Apache:
 ```bash
 sudo systemctl restart apache2.service   # Ubuntu/Debian
@@ -89,7 +106,7 @@ cd dmsy-vuln-activities
 确保在 Apache 配置中启用了以下模块：
 ```bash
 sudo a2enmod rewrite
-sudo a2enmod php8.3
+sudo a2enmod php8.2
 ```
 
 修改 Apache 配置文件，启用 .htaccess：
@@ -112,27 +129,7 @@ sudo systemctl restart apache2.service   # Ubuntu/Debian
 sudo systemctl restart httpd.service     # CentOS/RHEL
 ```
 
-### 4. 配置网站文件
-
-1. 将所有文件复制到 Web 服务器的根目录：
-
-```bash
-# Ubuntu/Debian
-sudo cp -r * /var/www/html/
-sudo cp .htaccess /var/www/html/
-```
-
-2. 确保 Web 服务器对上传目录有写入权限：
-
-```bash
-# Linux
-sudo mkdir -p /var/www/html/uploads
-sudo chmod 777 /var/www/html/uploads
-```
-
-### 5. 配置数据库
-
-直接去 http://URL_ADDRESS/install.php 导入
+### 4. 配置数据库
 
 启动 MySQL 服务：
 ```bash
@@ -160,7 +157,25 @@ EXIT;
 mysql -u dmsyctfuser -p coolsite < database.sql
 ```
 
-修改 `config.php` 文件中的数据库连接信息（如有需要）：
+### 5. 配置网站文件
+
+1. 将所有文件复制到 Web 服务器的根目录：
+
+```bash
+# Ubuntu/Debian
+sudo cp -r * /var/www/html/
+sudo cp .htaccess /var/www/html/
+```
+
+2. 确保 Web 服务器对上传目录有写入权限：
+
+```bash
+# Linux
+sudo mkdir -p /var/www/html/uploads
+sudo chmod 777 /var/www/html/uploads
+```
+
+3. 修改 `config.php` 文件中的数据库连接信息（如有需要）：
 
 ```php
 <?php
@@ -178,6 +193,16 @@ $db_name = 'coolsite';     // 数据库名称
 ```bash
 sudo systemctl start apache2.service   # Ubuntu/Debian
 sudo systemctl start mysql.service
+# 或
+sudo systemctl start httpd.service     # CentOS/RHEL
+sudo systemctl start mariadb.service
+```
+
+或者，您也可以使用 PHP 内置服务器进行快速测试（不推荐用于生产环境）：
+
+```bash
+cd /path/to/website/
+php -S 0.0.0.0:8080
 ```
 
 ### 7. 访问网站
@@ -205,9 +230,19 @@ sudo systemctl start mysql.service
 2. 文件上传漏洞：
    - 尝试上传带有 PHP Webshell
 
-3. root 密码在 /var/www/html/__rootpasswd__ (权限 www-data www-data 660)：
-   - 密码：`root:d0afffc8205411f091001747cdab9003`
-   
+3. 密码复用:
+   - user:welcome 的 password 也是 dmsyctfpassword，可以实现 su 登录
+
+4. /home/welcome 权限问题:
+   - 可以读取 /home/welcome/bash_history 来获取密码
+
+5. /etc/passwd welcome 可写:
+   - 可以添加一个恶意用户，然后用 su 登录
+
+6. sudo 滥用:
+   - www-data 可以使用 sudo -l 查看用户的 sudo 权限, 有 sudo -u welcome vi 权限
+   - welcome 可以使用 sudo /home/*/backup.sh，路径穿越即可。 
+
 ## 注意事项
 
 本CTF挑战仅用于教育目的，请在合法授权的环境中使用。请勿在生产环境部署此代码，也不要将其用于非法活动。
